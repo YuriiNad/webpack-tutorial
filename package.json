@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"dev": "webpack-dev-server --open",
 		"build": "webpack"
 	},
 	"repository": {
@@ -22,6 +23,8 @@
 		"webpack-cli": "^5.0.1"
 	},
 	"devDependencies": {
+		"@babel/cli": "^7.21.0",
+		"@babel/core": "^7.21.4",
 		"html-webpack-plugin": "^5.5.0",
 		"webpack-dev-server": "^4.13.2"
 	}
