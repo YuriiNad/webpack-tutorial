@@ -1,9 +1,9 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
+module.exports = merge(common, {
 	mode: 'development',
-	entry: './src/index.js',
 	devtool: 'inline-source-map',
 	devServer: {
 		static: {
@@ -12,16 +12,6 @@ module.exports = {
 	},
 	module: {
 		rules: [
-			{
-				test: /\.m?js$/,
-				exclude: /node_modules/,
-				use: {
-					loader: "babel-loader",
-					options: {
-						presets: ['@babel/preset-env']
-					}
-				}
-			},
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
@@ -32,11 +22,4 @@ module.exports = {
 			}
 		]
 	},
-	plugins: [
-		new HtmlWebpackPlugin({ template: './src/index.html' }),
-	],
-	output: {
-		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].js',
-	},
-};
+});
